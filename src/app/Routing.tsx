@@ -2,19 +2,20 @@ import React from "react";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {HomePage, ErrorPage} from "pages";
 import {Jobs} from "features/Jobs/Jobs";
-import {getJobInfo, getJobs} from "shared/api";
+import {getJobs, getJobInfo} from "shared/api";
 import {JobInfo} from "features/Jobs/components/JobInfo";
 
 export const router = createBrowserRouter([
     {
         path: "/",
-        element: <HomePage/>,
+        element:  <HomePage/>,
         errorElement: <ErrorPage/>,
         children: [
             {
                 path: '/',
                 element: <Jobs/>,
-                loader: getJobs
+                id: 'jobs',
+                loader: () => getJobs(),
             },
             {
                 path: ":jobId",
