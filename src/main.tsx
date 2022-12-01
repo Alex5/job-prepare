@@ -1,10 +1,13 @@
 import {createRoot} from 'react-dom/client'
-
-import {RouterProvider} from "react-router-dom";
-import {router} from "./app/Routing";
+import {Routing} from "./app/Routing";
+import {StrictMode} from "react";
 
 const root = document.getElementById('root');
 
 if (!root) throw new Error('root not defined');
 
-createRoot(root).render(<RouterProvider router={router}/>);
+createRoot(root).render(
+    <StrictMode>
+        <Routing/>
+    </StrictMode>
+);

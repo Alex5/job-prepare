@@ -1,4 +1,5 @@
 import {supabase} from "supabase.config";
+import {defer} from "react-router-dom";
 
 export async function getJobs() {
     const {data, error} = await supabase.from("jobs").select("*");
@@ -7,7 +8,9 @@ export async function getJobs() {
         throw new Error(error.message);
     }
 
-    return data;
+    return defer({
+        jobs: data
+    });
 }
 
 export async function getJobInfo(jobId: string) {

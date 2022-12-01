@@ -15,7 +15,7 @@ export const router = createBrowserRouter([
                 path: '/',
                 element: <Jobs/>,
                 id: 'jobs',
-                loader: () => getJobs(),
+                loader: getJobs,
             },
             {
                 path: ":jobId",
